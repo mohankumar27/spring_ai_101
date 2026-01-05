@@ -1,7 +1,16 @@
 # Spring AI 101
 
 A beginner-friendly Spring Boot application that demonstrates how to integrate and use OpenAI's chat capabilities with Spring AI framework.
-[Medium Blogs](https://mohankumarsagadevan.medium.com/list/spring-ai-101-078cd80f25a7)
+
+---
+
+> 📚 **Read the Detailed Blog Series on Medium!**
+>
+> Learn step-by-step tutorials and deep dives into Spring AI concepts:
+>
+> ➡️ [**Spring AI 101 Blog Series**](https://mohankumarsagadevan.medium.com/list/spring-ai-101-078cd80f25a7)
+
+---
 
 ## 📋 Table of Contents
 
