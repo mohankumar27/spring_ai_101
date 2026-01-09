@@ -10,7 +10,7 @@ import reactor.core.publisher.Flux;
 @RequestMapping("/custom")
 public class CustomChatController {
 
-    private final ChatClient travelChatClient;
+    private final ChatClient travelChatClient; // Bean configured in Config.java
 
     public CustomChatController(ChatClient travelChatClient) {
         this.travelChatClient =  travelChatClient;
