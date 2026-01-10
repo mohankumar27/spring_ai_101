@@ -81,11 +81,3 @@ gradlew.bat bootRun
 ```
 
 The application will start at `http://localhost:8080`
-
-## 💬 Usage
-
-Once the application is running, you can interact with the chat API:
-
-### Basic Chat Endpoint
-
-**URL:** `GET /ai/chat/simple`
