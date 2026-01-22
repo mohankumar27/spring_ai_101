@@ -30,12 +30,16 @@ public class IngestionService implements CommandLineRunner {
         TextReader reader = new TextReader(policyDocument);
         reader.getCustomMetadata().put("filename", "company-policy.txt");
         List<Document> rawDocuments = reader.get();
-        log.info("Loaded {} document(s)", rawDocuments.size());
+        for(Document document : rawDocuments) {
+            document.getMetadata().put("year", "2025");
+            document.getMetadata().put("department", "HR");
+        }
+        log.info("Loaded {} document(s), metadata={}", rawDocuments.size(), rawDocuments.get(0).getMetadata());
         // 2. Transform (Split)
         // Split text into chunks of roughly 100 tokens to fit in context windows
         TokenTextSplitter splitter = TokenTextSplitter.builder().withChunkSize(100).build();
         List<Document> splitDocuments = splitter.apply(rawDocuments);
-        log.info("Split into {} chunks", splitDocuments.size());
+        log.info("Split into {} chunks, metadata={}", splitDocuments.size(), splitDocuments.get(0).getMetadata());
         // 3. Load (Write)
         // This line calls the EmbeddingModel to turn text into vectors
         // and stores them in the DB.
