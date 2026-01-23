@@ -27,6 +27,7 @@ dependencies {
 	implementation 'org.springframework.ai:spring-ai-starter-model-openai'
 	implementation 'org.springframework.ai:spring-ai-starter-mcp-client'
 	implementation 'org.springframework.ai:spring-ai-vector-store'
+	implementation 'org.springframework.ai:spring-ai-advisors-vector-store' // Needed for QuestionAnswerAdvisor
 	implementation 'org.springframework.ai:spring-ai-starter-model-transformers' // Needed when using local embedding model
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
