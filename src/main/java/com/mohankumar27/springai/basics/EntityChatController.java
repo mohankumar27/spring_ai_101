@@ -1,5 +1,6 @@
 package com.mohankumar27.springai.basics;
 
+import com.mohankumar27.springai.advisors.SelfCorrectionAdvisor;
 import com.mohankumar27.springai.dto.MovieRecommendation;
 import com.mohankumar27.springai.dto.Recipe;
 import org.springframework.ai.chat.client.AdvisorParams;
@@ -20,7 +21,7 @@ public class EntityChatController {
     private final ChatClient chatClient;
 
     public EntityChatController(ChatClient.Builder builder) {
-        this.chatClient = builder
+        this.chatClient = builder.clone()
                 .defaultAdvisors(new SimpleLoggerAdvisor()) // Logs requests and responses to LLM in console
                 .build();
     }
@@ -59,4 +60,15 @@ public class EntityChatController {
                 .call()
                 .entity(Recipe.class);
     }
+
+    @GetMapping("/self-correct-advisor")
+    public Recipe generateRecipeWithSelfCorrection(@RequestParam String ingredients) {
+        return this.chatClient.prompt()
+                .advisors(new SelfCorrectionAdvisor(1))
+                .user(u -> u.text("Create a recipe using these ingredients: {ingredients}")
+                        .param("ingredients", ingredients))
+                .call()
+                .entity(Recipe.class);
+    }
+
 }
